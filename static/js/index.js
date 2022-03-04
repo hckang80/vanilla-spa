@@ -11,6 +11,7 @@ const router = async () => {
       isMatch: route.path === location.pathname,
     }
   })
+
   const match = pageMatches.find((pageMatch) => pageMatch.isMatch)
   console.log(match.route.view())
 }
@@ -23,5 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
       router()
     }
   })
+  router()
+})
+
+window.addEventListener("popstate", () => {
   router()
 })
