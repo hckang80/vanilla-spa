@@ -1,8 +1,12 @@
+import Home from "./pages/Home.js"
+import Posts from "./pages/Posts.js"
+import Settings from "./pages/Settings.js"
+
 const router = async () => {
   const routes = [
-    { path: "/", view: () => console.log("Viewing Home") },
-    { path: "/posts", view: () => console.log("Viewing Posts") },
-    { path: "/settings", view: () => console.log("Viewing Settings") },
+    { path: "/", view: Home },
+    { path: "/posts", view: Posts },
+    { path: "/settings", view: Settings },
   ]
 
   const pageMatches = routes.map((route) => {
@@ -13,7 +17,10 @@ const router = async () => {
   })
 
   const match = pageMatches.find((pageMatch) => pageMatch.isMatch)
-  console.log(match.route.view())
+
+  const page = match.route.view()
+    
+  document.querySelector("#root").innerHTML = await page.render()
 }
 
 document.addEventListener("DOMContentLoaded", () => {
