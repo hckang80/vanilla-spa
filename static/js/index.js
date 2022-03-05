@@ -19,7 +19,8 @@ const router = async () => {
   const match = pageMatches.find((pageMatch) => pageMatch.isMatch)
 
   const page = match.route.view()
-    
+
+  document.title = page.title
   document.querySelector('#root').innerHTML = await page.render()
 }
 
