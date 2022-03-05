@@ -4,15 +4,15 @@ import Settings from "./pages/Settings.js"
 
 const router = async () => {
   const routes = [
-    { path: "/", view: Home },
-    { path: "/posts", view: Posts },
-    { path: "/settings", view: Settings },
+    { path: "", view: Home },
+    { path: "#posts", view: Posts },
+    { path: "#settings", view: Settings },
   ]
 
   const pageMatches = routes.map((route) => {
     return {
       route,
-      isMatch: route.path === location.pathname,
+      isMatch: route.path === location.hash,
     }
   })
 
@@ -23,11 +23,20 @@ const router = async () => {
   document.querySelector("#root").innerHTML = await page.render()
 }
 
+const toHash = (href = '') => {
+  const path = href.split('/').pop()
+    ? `#${href.split('/').pop()}`
+    : ''
+  const pathArray = href.split('/')
+  const url = `${pathArray.slice(0, pathArray.length - 1).join('/')}/${path}`
+  return url
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", (e) => {
     if (e.target.matches("[data-link]")) {
       e.preventDefault()
-      history.pushState(null, null, e.target.href)
+      history.pushState(null, null, toHash(e.target.href))
       router()
     }
   })
