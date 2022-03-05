@@ -1,4 +1,4 @@
-document.title = "Settings"
+document.title = 'Settings'
 
 export default () => ({
   render() {

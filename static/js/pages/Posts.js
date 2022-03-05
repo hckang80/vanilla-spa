@@ -1,4 +1,4 @@
-document.title = "Posts"
+document.title = 'Posts'
 
 export default () => ({
   render() {

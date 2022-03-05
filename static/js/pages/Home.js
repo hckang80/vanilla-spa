@@ -1,4 +1,4 @@
-document.title = "Home"
+document.title = 'Home'
 
 export default () => ({
   render() {

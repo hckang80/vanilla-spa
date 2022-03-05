@@ -1,12 +1,12 @@
-import Home from "./pages/Home.js"
-import Posts from "./pages/Posts.js"
-import Settings from "./pages/Settings.js"
+import Home from './pages/Home.js'
+import Posts from './pages/Posts.js'
+import Settings from './pages/Settings.js'
 
 const router = async () => {
   const routes = [
-    { path: "", view: Home },
-    { path: "#posts", view: Posts },
-    { path: "#settings", view: Settings },
+    { path: '', view: Home },
+    { path: '#posts', view: Posts },
+    { path: '#settings', view: Settings },
   ]
 
   const pageMatches = routes.map((route) => {
@@ -20,7 +20,7 @@ const router = async () => {
 
   const page = match.route.view()
     
-  document.querySelector("#root").innerHTML = await page.render()
+  document.querySelector('#root').innerHTML = await page.render()
 }
 
 const toHash = (href = '') => {
@@ -32,9 +32,9 @@ const toHash = (href = '') => {
   return url
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.body.addEventListener("click", (e) => {
-    if (e.target.matches("[data-link]")) {
+document.addEventListener('DOMContentLoaded', () => {
+  document.body.addEventListener('click', (e) => {
+    if (e.target.matches('[data-link]')) {
       e.preventDefault()
       history.pushState(null, null, toHash(e.target.href))
       router()
@@ -43,6 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
   router()
 })
 
-window.addEventListener("popstate", () => {
+window.addEventListener('popstate', () => {
   router()
 })
