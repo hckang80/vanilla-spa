@@ -2,13 +2,13 @@ import Home from './pages/Home.js'
 import Posts from './pages/Posts.js'
 import Settings from './pages/Settings.js'
 
-const router = async () => {
-  const routes = [
-    { path: '', view: Home },
-    { path: '#posts', view: Posts },
-    { path: '#settings', view: Settings },
-  ]
+const routes = [
+  { path: '', view: Home },
+  { path: '#posts', view: Posts },
+  { path: '#settings', view: Settings },
+]
 
+const router = async () => {
   const pageMatches = routes.map((route) => {
     return {
       route,
